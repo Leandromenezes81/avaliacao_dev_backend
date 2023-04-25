@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vectra.Avaliacao.Backend.Domain\Vectra.Avaliacao.Backend.Domain.csproj" />
+    <ProjectReference Include="..\Vectra.Avaliacao.Backend.Infra\Vectra.Avaliacao.Backend.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+	
+</Project>

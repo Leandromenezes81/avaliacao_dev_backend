@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Filters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vectra.Avaliacao.Backend.Application\Vectra.Avaliacao.Backend.Application.csproj" />
+    <ProjectReference Include="..\Vectra.Avaliacao.Backend.Domain\Vectra.Avaliacao.Backend.Domain.csproj" />
+    <ProjectReference Include="..\Vectra.Avaliacao.Backend.Infra\Vectra.Avaliacao.Backend.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
