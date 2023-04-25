@@ -8,8 +8,8 @@ public interface IRepositoryBase<TEntity> where TEntity : class
 {
     Task<List<TEntity>> GetAllAsync();
     Task<TEntity?> GetByIdAsync(int id);
-    IQueryable<TEntity> GetQueryAbleAsync();
-    void CreateAsync(TEntity entity);
+    IQueryable<TEntity> GetQueryAble();
+    Task CreateAsync(TEntity entity);
     void Update(TEntity entity);
     void Delete(TEntity entity);
 }
