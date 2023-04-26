@@ -18,7 +18,7 @@ public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
     public async Task<List<TEntity>> GetAllAsync() =>
         await _dbSet.ToListAsync();
 
-    public async Task<TEntity?> GetByIdAsync(int id) => 
+    public async Task<TEntity> GetByIdAsync(int id) => 
         await _dbSet.FindAsync(id);
 
     public IQueryable<TEntity> GetQueryAble() => _dbSet;

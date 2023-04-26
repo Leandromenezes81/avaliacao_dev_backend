@@ -24,7 +24,7 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, string>
         var user = await _userRepository.GetByPasswordAndEmailAsync(request.Email, passwordHash);
 
         if (user == null)
-            return null;
+            return string.Empty;
 
         return _authService.GenerateJwtToken(user.Email, user.Roles);
     }

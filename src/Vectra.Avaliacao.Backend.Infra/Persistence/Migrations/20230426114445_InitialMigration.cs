@@ -16,8 +16,8 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 24, 21, 7, 57, 739, DateTimeKind.Utc).AddTicks(8050)),
-                    CreatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 24, 21, 7, 57, 739, DateTimeKind.Utc).AddTicks(8753)),
+                    UpdatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(9766)),
+                    CreatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(9365)),
                     IsActive = table.Column<bool>(type: "BIT", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -33,8 +33,8 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "VARCHAR(80)", maxLength: 80, nullable: false),
                     PasswordHash = table.Column<string>(type: "VARCHAR(255)", maxLength: 255, nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 24, 21, 7, 57, 740, DateTimeKind.Utc).AddTicks(2986)),
-                    CreatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 24, 21, 7, 57, 740, DateTimeKind.Utc).AddTicks(3580)),
+                    UpdatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 26, 11, 44, 45, 585, DateTimeKind.Utc).AddTicks(3355)),
+                    CreatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 26, 11, 44, 45, 585, DateTimeKind.Utc).AddTicks(2963)),
                     IsActive = table.Column<bool>(type: "BIT", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -52,8 +52,8 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     Branch = table.Column<string>(type: "NVARCHAR(40)", maxLength: 40, nullable: false),
                     Number = table.Column<string>(type: "NVARCHAR(20)", maxLength: 20, nullable: false),
                     Balance = table.Column<decimal>(type: "NUMERIC(10,2)", nullable: false, defaultValue: 0.00m),
-                    UpdatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 24, 21, 7, 57, 738, DateTimeKind.Utc).AddTicks(8063)),
-                    CreatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 24, 21, 7, 57, 738, DateTimeKind.Utc).AddTicks(9001)),
+                    UpdatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(4432)),
+                    CreatedAt = table.Column<DateTime>(type: "SMALLDATETIME", nullable: false, defaultValue: new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(3974)),
                     IsActive = table.Column<bool>(type: "BIT", nullable: false, defaultValue: false)
                 },
                 constraints: table =>

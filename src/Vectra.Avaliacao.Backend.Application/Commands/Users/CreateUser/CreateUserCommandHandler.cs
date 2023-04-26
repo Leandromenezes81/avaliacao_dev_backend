@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
 
     public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var passwordHash = _authService.GeneratePasswordHash(request.PasswordHash);
+        var passwordHash = _authService.GeneratePasswordHash(request.Password);
 
         var roles = new List<Role>();
 
@@ -42,9 +43,9 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
             request.Email,
             passwordHash,
             roles,
-            request.CreatedAt,
-            request.UpdatedAt,
-            request.IsActive);
+            DateTime.Now,
+            DateTime.Now,
+            true);
 
         await _userRepository.AddAsync(user);
         await _unitOfWork.Commit();

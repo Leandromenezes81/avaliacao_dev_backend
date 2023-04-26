@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Filters\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Vectra.Avaliacao.Backend.Application\Vectra.Avaliacao.Backend.Application.csproj" />
     <ProjectReference Include="..\Vectra.Avaliacao.Backend.Domain\Vectra.Avaliacao.Backend.Domain.csproj" />
     <ProjectReference Include="..\Vectra.Avaliacao.Backend.Infra\Vectra.Avaliacao.Backend.Infra.csproj" />

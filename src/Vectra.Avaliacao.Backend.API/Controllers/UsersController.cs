@@ -25,7 +25,6 @@ public class UsersController : ControllerBase
 
     [HttpPut("login")]
     [AllowAnonymous]
-
     public async Task<IActionResult> Login([FromBody] LoginUserCommand login) => 
         Ok(new { token = await _mediator.Send(login) });
 }

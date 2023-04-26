@@ -2,8 +2,6 @@
 
 namespace Vectra.Avaliacao.Backend.Application.Commands.Users.LoginUser;
 
-public class LoginUserCommand : IRequest<string>
+public record LoginUserCommand(string Email, string Password) : IRequest<string>
 {
-    public string Email { get; set; }
-    public string Password { get; set; }
 }

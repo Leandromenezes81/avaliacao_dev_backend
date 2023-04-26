@@ -12,16 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Accounts\" />
     <Folder Include="Commands\Roles\" />
-    <Folder Include="Queries\Accounts\" />
     <Folder Include="Queries\Users\" />
     <Folder Include="Queries\Roles\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
     <PackageReference Include="MediatR" Version="12.0.1" />
   </ItemGroup>
 	

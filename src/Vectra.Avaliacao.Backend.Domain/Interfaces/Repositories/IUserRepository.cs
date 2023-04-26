@@ -8,7 +8,7 @@ public interface IUserRepository
 {
     Task AddAsync(User user);
     Task<List<User>> GetAllAsync();
-    Task<User?> GetByIdAsync(int id);
-    Task<User?> GetByPasswordAndEmailAsync(string email, string password);
+    Task<User> GetByIdAsync(int id);
+    Task<User> GetByPasswordAndEmailAsync(string email, string password);
     void Update (User user);
 }

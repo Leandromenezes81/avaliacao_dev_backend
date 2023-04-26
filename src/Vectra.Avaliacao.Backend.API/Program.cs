@@ -1,3 +1,5 @@
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
 using Vectra.Avaliacao.Backend.Application.Commands.Users.CreateUser;
+using Vectra.Avaliacao.Backend.Application.Validators.Users;
 using Vectra.Avaliacao.Backend.Domain.Interfaces.Repositories;
 using Vectra.Avaliacao.Backend.Domain.Interfaces.Services;
 using Vectra.Avaliacao.Backend.Domain.Interfaces.UnitOfWork;
@@ -74,6 +77,9 @@ void ConfigureMvc(WebApplicationBuilder builder)
             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
         });
+
+    builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+    builder.Services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
 }
 #endregion
 
@@ -131,6 +137,7 @@ void ConfigureServices(WebApplicationBuilder builder)
 void ConfigureRepositories(WebApplicationBuilder builder)
 {
     builder.Services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+    builder.Services.AddScoped<IAccountRepository, AccountRepository>();
     builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IRoleRepository, RoleRepository>();
     builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

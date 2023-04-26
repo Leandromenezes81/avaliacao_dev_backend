@@ -17,11 +17,11 @@ public class RoleMap : IEntityTypeConfiguration<Role>
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-        builder.Property(x => x.UpdatedAt)
+        builder.Property(x => x.Name)
                 .IsRequired()
-                .HasColumnName(nameof(Role.UpdatedAt))
-                .HasColumnType("SMALLDATETIME")
-                .HasDefaultValue(DateTime.Now.ToUniversalTime());
+                .HasColumnName(nameof(Role.Name))
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(20);
 
         builder.Property(x => x.CreatedAt)
                 .IsRequired()
@@ -29,11 +29,11 @@ public class RoleMap : IEntityTypeConfiguration<Role>
                 .HasColumnType("SMALLDATETIME")
                 .HasDefaultValue(DateTime.Now.ToUniversalTime());
 
-        builder.Property(x => x.Name)
+        builder.Property(x => x.UpdatedAt)
                 .IsRequired()
-                .HasColumnName(nameof(Role.Name))
-                .HasColumnType("VARCHAR")
-                .HasMaxLength(20);
+                .HasColumnName(nameof(Role.UpdatedAt))
+                .HasColumnType("SMALLDATETIME")
+                .HasDefaultValue(DateTime.Now.ToUniversalTime());
 
         builder.Property(x => x.IsActive)
                 .IsRequired()

@@ -16,18 +16,18 @@ public class UserRepository : IUserRepository
         _repositoryBase = repositoryBase;
     }
 
-    public async Task AddAsync(User user) => 
+    public async Task AddAsync(User user) =>
         await _repositoryBase.CreateAsync(user);
 
     public async Task<List<User>> GetAllAsync() => 
         await _repositoryBase.GetAllAsync();
 
-    public async Task<User?> GetByIdAsync(int id) => await _repositoryBase.GetByIdAsync(id);
+    public async Task<User> GetByIdAsync(int id) => await _repositoryBase.GetByIdAsync(id);
 
-    public Task<User?> GetByPasswordAndEmailAsync(string email, string password) => 
+    public Task<User> GetByPasswordAndEmailAsync(string email, string password) => 
         _repositoryBase.GetQueryAble()
                 .Include(x => x.Roles)
-                .SingleOrDefaultAsync(u => u.Email == email && u.PasswordHash == password);
+                .FirstOrDefaultAsync(u => u.Email == email && u.PasswordHash == password);
 
     public void Update(User user) => _repositoryBase.Update(user);
 }

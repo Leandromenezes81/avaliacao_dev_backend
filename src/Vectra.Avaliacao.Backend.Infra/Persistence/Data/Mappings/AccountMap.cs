@@ -17,18 +17,6 @@ public class AccountMap : IEntityTypeConfiguration<Account>
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-        builder.Property(x => x.UpdatedAt)
-                .IsRequired()
-                .HasColumnName(nameof(Account.UpdatedAt))
-                .HasColumnType("SMALLDATETIME")
-                .HasDefaultValue(DateTime.Now.ToUniversalTime());
-
-        builder.Property(x => x.CreatedAt)
-                .IsRequired()
-                .HasColumnName(nameof(Account.CreatedAt))
-                .HasColumnType("SMALLDATETIME")
-                .HasDefaultValue(DateTime.Now.ToUniversalTime());
-
         builder.Property(x => x.Branch)
                 .IsRequired()
                 .HasColumnName(nameof(Account.Branch))
@@ -45,7 +33,19 @@ public class AccountMap : IEntityTypeConfiguration<Account>
                 .IsRequired()
                 .HasColumnName(nameof(Account.Balance))
                 .HasColumnType("NUMERIC(10,2)")
-                .HasDefaultValue(0.00M);
+                .HasDefaultValue(0.00M);        
+
+        builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .HasColumnName(nameof(Account.CreatedAt))
+                .HasColumnType("SMALLDATETIME")
+                .HasDefaultValue(DateTime.Now.ToUniversalTime());
+
+        builder.Property(x => x.UpdatedAt)
+                .IsRequired()
+                .HasColumnName(nameof(Account.UpdatedAt))
+                .HasColumnType("SMALLDATETIME")
+                .HasDefaultValue(DateTime.Now.ToUniversalTime());
 
         builder.Property(x => x.IsActive)
                 .IsRequired()
@@ -55,7 +55,7 @@ public class AccountMap : IEntityTypeConfiguration<Account>
 
         builder.HasIndex(x => x.Number, "IX_Account_Number");
 
-        builder.HasOne(x => x.Client)
+        builder.HasOne(x => x.User)
                 .WithMany(x => x.Accounts)
                 .HasForeignKey(x => x.UserId)
                 .HasConstraintName("FK_Account_User")

@@ -18,18 +18,6 @@ public class UserMap : IEntityTypeConfiguration<User>
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
-        builder.Property(x => x.UpdatedAt)
-                .IsRequired()
-                .HasColumnName(nameof(User.UpdatedAt))
-                .HasColumnType("SMALLDATETIME")
-                .HasDefaultValue(DateTime.Now.ToUniversalTime());
-
-        builder.Property(x => x.CreatedAt)
-                .IsRequired()
-                .HasColumnName(nameof(User.CreatedAt))
-                .HasColumnType("SMALLDATETIME")
-                .HasDefaultValue(DateTime.Now.ToUniversalTime());
-
         builder.Property(x => x.Email)
                 .IsRequired()
                 .HasColumnName(nameof(User.Email))
@@ -41,6 +29,18 @@ public class UserMap : IEntityTypeConfiguration<User>
                 .HasColumnName(nameof(User.PasswordHash))
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(255);
+
+        builder.Property(x => x.CreatedAt)
+                .IsRequired()
+                .HasColumnName(nameof(User.CreatedAt))
+                .HasColumnType("SMALLDATETIME")
+                .HasDefaultValue(DateTime.Now.ToUniversalTime());
+
+        builder.Property(x => x.UpdatedAt)
+                .IsRequired()
+                .HasColumnName(nameof(User.UpdatedAt))
+                .HasColumnType("SMALLDATETIME")
+                .HasDefaultValue(DateTime.Now.ToUniversalTime());                
 
         builder.Property(x => x.IsActive)
                 .IsRequired()
