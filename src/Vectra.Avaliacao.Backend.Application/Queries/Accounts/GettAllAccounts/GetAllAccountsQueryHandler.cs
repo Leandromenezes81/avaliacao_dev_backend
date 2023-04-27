@@ -29,7 +29,7 @@ public class GetAllAccountsQueryHandler : IRequestHandler<GetAllAccountsQuery, P
                 x.Id.ToString(),
                 x.Branch,
                 x.Number,
-                x.User.Email,
+                x.User.Name,
                 x.Balance.ToString(),
                 x.CreatedAt.ToString(),
                 x.UpdatedAt.ToString(),
@@ -40,7 +40,7 @@ public class GetAllAccountsQueryHandler : IRequestHandler<GetAllAccountsQuery, P
         {
             Total = count.ToString(), 
             Page = request.Page.ToString(), 
-            PageSize = request.PageSize.ToString(), 
+            PageSize = list.Count.ToString(), 
             List = list
         };
     }

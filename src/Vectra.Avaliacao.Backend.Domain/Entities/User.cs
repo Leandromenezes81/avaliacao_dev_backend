@@ -7,12 +7,13 @@ public class User : BaseEntity<int>
 {
     public User()
     {
-        
+
     }
 
-    public User(string email, string passwordHash, List<Role> roles, DateTime createdAt, DateTime updatedAt, bool isActive)
+    public User(string name, string email, string passwordHash, List<Role> roles, DateTime createdAt, DateTime updatedAt, bool isActive)
     {
         Id = 0;
+        Name = name;
         Email = email;
         PasswordHash = passwordHash;
         Roles = roles;
@@ -21,6 +22,7 @@ public class User : BaseEntity<int>
         IsActive = isActive;
     }
 
+    public string Name { get; set; } = string.Empty;
     public string Email { get; private set; } = string.Empty;
     public string PasswordHash { get; private set; } = string.Empty;
     public List<Role> Roles { get; private set; } = new List<Role>();

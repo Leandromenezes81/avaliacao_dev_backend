@@ -18,6 +18,12 @@ public class UserMap : IEntityTypeConfiguration<User>
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 
+        builder.Property(x => x.Name)
+                .IsRequired()
+                .HasColumnName(nameof(User.Name))
+                .HasColumnType("NVARCHAR")
+                .HasMaxLength(80);
+
         builder.Property(x => x.Email)
                 .IsRequired()
                 .HasColumnName(nameof(User.Email))

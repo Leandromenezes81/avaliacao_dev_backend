@@ -26,7 +26,7 @@ public class GetAccountByIdQueryHandler : IRequestHandler<GetAccountByIdQuery, A
             account.Id.ToString(),
             account.Branch,
             account.Number,
-            account.User.Email,
+            account.User.Name,
             account.Balance.ToString(),
             account.CreatedAt.ToString(),
             account.UpdatedAt.ToString(),
