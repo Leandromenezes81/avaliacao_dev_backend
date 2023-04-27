@@ -27,15 +27,15 @@ public class BaseEntityTests
         Assert.NotEqual(DateTime.Now, entity.CreatedAt);
     }
 
-    //[Fact]
-    //public void BaseEntity_UpdatedAt_IsInitialized()
-    //{
-    //    // Arrange
-    //    var entity = new BaseEntity<int>();
+    [Fact]
+    public void BaseEntity_UpdatedAt_IsInitialized()
+    {
+        // Arrange
+        var entity = new BaseEntity<int>();
 
-    //    // Assert
-    //    Assert.NotEqual(DateTime.Now, entity.UpdatedAt);
-    //}
+        // Assert
+        Assert.NotEqual(DateTime.Now, entity.UpdatedAt);
+    }
 
     [Fact]
     public void BaseEntity_IsActive_DefaultValueIsFalse()

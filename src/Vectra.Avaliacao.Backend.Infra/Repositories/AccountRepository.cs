@@ -36,8 +36,7 @@ public class AccountRepository : IAccountRepository
             .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<int> GetCountAsync() =>
-        await _repositoryBase.GetQueryAble()
-            .AsNoTracking().CountAsync();
+        await _repositoryBase.GetCountAsync();
 
     public void Update(Account account) => 
         _repositoryBase.Update(account);

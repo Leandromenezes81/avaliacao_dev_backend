@@ -23,8 +23,8 @@ public class User : BaseEntity<int>
     }
 
     public string Name { get; set; } = string.Empty;
-    public string Email { get; private set; } = string.Empty;
-    public string PasswordHash { get; private set; } = string.Empty;
-    public List<Role> Roles { get; private set; } = new List<Role>();
-    public List<Account> Accounts { get; private set; } = new List<Account>();
+    public string Email { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
+    public List<Role> Roles { get; set; } = new List<Role>();
+    public List<Account> Accounts { get; set; } = new List<Account>();
 }

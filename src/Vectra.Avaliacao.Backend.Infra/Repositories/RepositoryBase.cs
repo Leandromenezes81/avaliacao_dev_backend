@@ -13,15 +13,21 @@ public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
     private readonly DbSet<TEntity> _dbSet;
 
     public RepositoryBase(VectraDbContext dbContext) => 
-        _dbSet = dbContext.Set<TEntity>();
+        _dbSet = dbContext.Set<TEntity>();    
 
-    public async Task<List<TEntity>> GetAllAsync() =>
-        await _dbSet.ToListAsync();
+    public async Task<List<TEntity>> GetAllAsync(int page, int pageSize) =>
+        await _dbSet.AsNoTracking()
+            .Skip(page * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
 
     public async Task<TEntity> GetByIdAsync(int id) => 
         await _dbSet.FindAsync(id);
 
     public IQueryable<TEntity> GetQueryAble() => _dbSet;
+
+    public async Task<int> GetCountAsync() 
+        => await _dbSet.AsNoTracking().CountAsync();
 
     public async Task CreateAsync(TEntity entity) => await _dbSet.AddAsync(entity);
 

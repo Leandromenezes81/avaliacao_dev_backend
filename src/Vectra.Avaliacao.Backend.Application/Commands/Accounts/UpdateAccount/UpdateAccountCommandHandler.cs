@@ -9,14 +9,12 @@ namespace Vectra.Avaliacao.Backend.Application.Commands.Accounts.UpdateAccount;
 
 public class UpdateAccountCommandHandler : IRequestHandler<UpdateAccountCommand, Unit>
 {
-    private readonly IAccountRepository _accountRepository;
-    private readonly IUserRepository _userRepository;
+    private readonly IAccountRepository _accountRepository;    
     private readonly IUnitOfWork _unitOfWork;
 
-    public UpdateAccountCommandHandler(IAccountRepository accountRepository, IUserRepository userRepository, IUnitOfWork unitOfWork)
+    public UpdateAccountCommandHandler(IAccountRepository accountRepository, IUnitOfWork unitOfWork)
     {
         _accountRepository = accountRepository;
-        _userRepository = userRepository;
         _unitOfWork = unitOfWork;
     }
 

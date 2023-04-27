@@ -8,6 +8,10 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 {
     public CreateUserCommandValidator()
     {
+        RuleFor(p => p.Name)
+            .NotEmpty()
+            .WithMessage("O campo de nome é origatório");
+
         RuleFor(p => p.Email)
             .NotEmpty()
             .EmailAddress()

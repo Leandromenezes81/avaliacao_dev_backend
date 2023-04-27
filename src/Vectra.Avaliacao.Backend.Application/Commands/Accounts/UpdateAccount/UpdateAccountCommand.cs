@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Vectra.Avaliacao.Backend.Application.ViewModels;
 
 namespace Vectra.Avaliacao.Backend.Application.Commands.Accounts.UpdateAccount;
 
