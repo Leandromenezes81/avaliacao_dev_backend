@@ -9,7 +9,7 @@ using Vectra.Avaliacao.Backend.Domain.Interfaces.UnitOfWork;
 
 namespace Vectra.Avaliacao.Backend.Application.Commands.Accounts.CreateAccount;
 
-public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Unit>
+public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, string>
 {
     private readonly IAccountRepository _accountRepository;
     private readonly IUserRepository _userRepository;
@@ -22,12 +22,12 @@ public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand,
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Unit> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
+    public async Task<string> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
     {
         var user = _userRepository.GetByIdAsync(request.UserId).Result;
 
         if (user == null)
-            return default;
+            return string.Empty;
 
         var account = new Account(
             request.UserId,
@@ -43,6 +43,6 @@ public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand,
         await _accountRepository.AddAsync(account);
         await _unitOfWork.Commit();
 
-        return Unit.Value;
+        return account.Id.ToString();
     }
 }

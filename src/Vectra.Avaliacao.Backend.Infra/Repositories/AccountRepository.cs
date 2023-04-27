@@ -35,6 +35,10 @@ public class AccountRepository : IAccountRepository
             .Include(x => x.User)
             .FirstOrDefaultAsync(x => x.Id == id);
 
+    public async Task<int> GetCountAsync() =>
+        await _repositoryBase.GetQueryAble()
+            .AsNoTracking().CountAsync();
+
     public void Update(Account account) => 
         _repositoryBase.Update(account);
 }

@@ -9,5 +9,6 @@ public interface IAccountRepository
     Task AddAsync(Account account);
     Task<List<Account>> GetAllAsync(int page, int pageSize);
     Task<Account?> GetByIdAsync(int id);
+    Task<int> GetCountAsync();
     void Update (Account account);
 }

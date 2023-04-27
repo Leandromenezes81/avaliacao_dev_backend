@@ -38,8 +38,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
@@ -88,7 +88,7 @@ void ConfigureSwagger(WebApplicationBuilder builder)
 {
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "VarietyShop.API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vectra.API", Version = "v1" });
 
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {

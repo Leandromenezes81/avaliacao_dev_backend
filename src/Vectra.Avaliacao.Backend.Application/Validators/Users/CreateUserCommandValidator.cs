@@ -11,12 +11,12 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
         RuleFor(p => p.Email)
             .NotEmpty()
             .EmailAddress()
-            .WithMessage("Email inválido ou não preenchido");
+            .WithMessage("Email inválido ou não preenchido.");
 
         RuleFor(p => p.Password)
             .NotEmpty()
             .Must(ValidPassword)
-            .WithMessage("Senha é obrigatória e deve conter 8 caracteres(mínimo um número, uma letra minúscula, uma letra maiúscula e uma caracter especial");
+            .WithMessage("Senha é obrigatória e deve conter 8 caracteres(mínimo um número, uma letra minúscula, uma letra maiúscula e uma caracter especial.");
     }
 
     public bool ValidPassword(string password) =>

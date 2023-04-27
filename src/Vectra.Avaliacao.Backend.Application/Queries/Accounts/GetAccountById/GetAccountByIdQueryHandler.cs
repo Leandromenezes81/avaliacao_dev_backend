@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using Vectra.Avaliacao.Backend.Application.ViewModels;
+using Vectra.Avaliacao.Backend.Application.ViewModels.Account;
 using Vectra.Avaliacao.Backend.Domain.Interfaces.Repositories;
 
 namespace Vectra.Avaliacao.Backend.Application.Queries.Accounts.GetAccountById;

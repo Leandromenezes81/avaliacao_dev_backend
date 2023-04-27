@@ -60,7 +60,7 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("SMALLDATETIME")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(3974))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 17, 38, 20, 927, DateTimeKind.Utc).AddTicks(7154))
                         .HasColumnName("CreatedAt");
 
                     b.Property<bool>("IsActive")
@@ -78,7 +78,7 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("SMALLDATETIME")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(4432))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 17, 38, 20, 927, DateTimeKind.Utc).AddTicks(8060))
                         .HasColumnName("UpdatedAt");
 
                     b.Property<int>("UserId")
@@ -88,7 +88,8 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex(new[] { "Number" }, "IX_Account_Number");
+                    b.HasIndex(new[] { "Number" }, "IX_Account_Number")
+                        .IsUnique();
 
                     b.ToTable("Account", (string)null);
                 });
@@ -104,7 +105,7 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("SMALLDATETIME")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(9365))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 17, 38, 20, 928, DateTimeKind.Utc).AddTicks(7617))
                         .HasColumnName("CreatedAt");
 
                     b.Property<bool>("IsActive")
@@ -122,7 +123,7 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("SMALLDATETIME")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 44, 45, 584, DateTimeKind.Utc).AddTicks(9766))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 17, 38, 20, 928, DateTimeKind.Utc).AddTicks(8414))
                         .HasColumnName("UpdatedAt");
 
                     b.HasKey("Id");
@@ -144,7 +145,7 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("SMALLDATETIME")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 44, 45, 585, DateTimeKind.Utc).AddTicks(2963))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 17, 38, 20, 929, DateTimeKind.Utc).AddTicks(4823))
                         .HasColumnName("CreatedAt");
 
                     b.Property<string>("Email")
@@ -168,7 +169,7 @@ namespace Vectra.Avaliacao.Backend.Infra.Persistence.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("SMALLDATETIME")
-                        .HasDefaultValue(new DateTime(2023, 4, 26, 11, 44, 45, 585, DateTimeKind.Utc).AddTicks(3355))
+                        .HasDefaultValue(new DateTime(2023, 4, 26, 17, 38, 20, 929, DateTimeKind.Utc).AddTicks(5606))
                         .HasColumnName("UpdatedAt");
 
                     b.HasKey("Id");

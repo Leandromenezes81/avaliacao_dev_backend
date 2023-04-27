@@ -10,7 +10,7 @@ using Vectra.Avaliacao.Backend.Domain.Interfaces.UnitOfWork;
 
 namespace Vectra.Avaliacao.Backend.Application.Commands.Users.CreateUser;
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
 {
     private readonly IUserRepository _userRepository;
     private readonly IRoleRepository _roleRepository;
@@ -25,7 +25,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
         _authService = authService;
     }
 
-    public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         var passwordHash = _authService.GeneratePasswordHash(request.Password);
 
@@ -50,6 +50,6 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
         await _userRepository.AddAsync(user);
         await _unitOfWork.Commit();
 
-        return user.Id;
+        return user.Id.ToString();
     }
 }

@@ -24,8 +24,8 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetByIdAsync(int id) => await _repositoryBase.GetByIdAsync(id);
 
-    public Task<User> GetByPasswordAndEmailAsync(string email, string password) => 
-        _repositoryBase.GetQueryAble()
+    public async Task<User> GetByPasswordAndEmailAsync(string email, string password) => 
+        await _repositoryBase.GetQueryAble()
                 .Include(x => x.Roles)
                 .FirstOrDefaultAsync(u => u.Email == email && u.PasswordHash == password);
 

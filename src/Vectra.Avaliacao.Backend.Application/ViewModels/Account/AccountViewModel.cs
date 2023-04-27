@@ -1,4 +1,4 @@
-﻿namespace Vectra.Avaliacao.Backend.Application.ViewModels;
+﻿namespace Vectra.Avaliacao.Backend.Application.ViewModels.Account;
 
 public class AccountViewModel
 {

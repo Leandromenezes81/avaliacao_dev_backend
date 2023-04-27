@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Vectra.Avaliacao.Backend.Application.ViewModels;
+using Vectra.Avaliacao.Backend.Application.ViewModels.Account;
 using Vectra.Avaliacao.Backend.Domain.Interfaces.Repositories;
 
 namespace Vectra.Avaliacao.Backend.Application.Queries.Accounts.GettAllAccounts;
 
-public class GetAllAccountsQueryHandler : IRequestHandler<GetAllAccountsQuery, List<AccountViewModel>>
+public class GetAllAccountsQueryHandler : IRequestHandler<GetAllAccountsQuery, PaginationViewModel<List<AccountViewModel>>>
 {
     private readonly IAccountRepository _accountRepository;
 
@@ -17,11 +18,13 @@ public class GetAllAccountsQueryHandler : IRequestHandler<GetAllAccountsQuery, L
         _accountRepository = accountRepository;
     }
 
-    public async Task<List<AccountViewModel>> Handle(GetAllAccountsQuery request, CancellationToken cancellationToken)
+    public async Task<PaginationViewModel<List<AccountViewModel>>> Handle(GetAllAccountsQuery request, CancellationToken cancellationToken)
     {
+        var count = await _accountRepository.GetCountAsync();
+
         var accounts = await _accountRepository.GetAllAsync(request.Page, request.PageSize);
 
-        return accounts
+        var list = accounts
             .Select(x => new AccountViewModel(
                 x.Id.ToString(),
                 x.Branch,
@@ -32,5 +35,13 @@ public class GetAllAccountsQueryHandler : IRequestHandler<GetAllAccountsQuery, L
                 x.UpdatedAt.ToString(),
                 x.IsActive.ToString()))
             .ToList();
+
+        return new PaginationViewModel<List<AccountViewModel>>
+        {
+            Total = count.ToString(), 
+            Page = request.Page.ToString(), 
+            PageSize = request.PageSize.ToString(), 
+            List = list
+        };
     }
 }

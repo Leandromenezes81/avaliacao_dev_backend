@@ -2,6 +2,4 @@
 
 namespace Vectra.Avaliacao.Backend.Application.Commands.Accounts.DeleteAccount;
 
-public record DeleteAccountCommand(int Id) : IRequest<Unit>
-{
-}
+public record DeleteAccountCommand(int Id) : IRequest<Unit>;

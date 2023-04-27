@@ -53,7 +53,8 @@ public class AccountMap : IEntityTypeConfiguration<Account>
                 .HasColumnType("BIT")
                 .HasDefaultValue(false);
 
-        builder.HasIndex(x => x.Number, "IX_Account_Number");
+        builder.HasIndex(x => x.Number, "IX_Account_Number")
+                .IsUnique();
 
         builder.HasOne(x => x.User)
                 .WithMany(x => x.Accounts)
