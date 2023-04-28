@@ -32,7 +32,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{page:int}/{pageSize:int}")]
-    [Authorize(Roles = "Admin, Client")]
+    //[Authorize(Roles = "Admin, Client")]
     public async Task<IActionResult> GetAll(
         [FromRoute] int page,
         [FromRoute] int pageSize)
@@ -52,7 +52,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var query = new GetUserByIdQuery(id);
@@ -74,7 +74,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{name}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetByName([FromRoute] string name)
     {
         var query = new GetUserByNameQuery(name);
@@ -96,7 +96,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    [AllowAnonymous]
+    //[AllowAnonymous]
     public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
     {
         try
@@ -141,7 +141,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut]
-    [AllowAnonymous]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update([FromBody] UpdateUserCommand command)
     {
         try
@@ -162,7 +162,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         var command = new DeleteUserCommand(id);

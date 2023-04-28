@@ -31,7 +31,7 @@ public class AccountController : ControllerBase
     }
 
     [HttpGet("{page:int}/{pageSize:int}")]
-    [Authorize(Roles = "Admin, Client")]
+    //[Authorize(Roles = "Admin, Client")]
     public async Task<IActionResult> GetAll(
         [FromRoute] int page,
         [FromRoute] int pageSize)
@@ -51,7 +51,7 @@ public class AccountController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var query = new GetAccountByIdQuery(id);
@@ -74,7 +74,7 @@ public class AccountController : ControllerBase
 
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateAccountCommand command)
     {
         try
@@ -98,7 +98,7 @@ public class AccountController : ControllerBase
     }
 
     [HttpPut]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update([FromBody] UpdateAccountCommand command)
     {
         try
@@ -119,9 +119,9 @@ public class AccountController : ControllerBase
 
     }
 
-    [HttpDelete]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Delete(int id)
+    [HttpDelete("{id:int}")]
+    //[Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         var command = new DeleteAccountCommand(id);
 
