@@ -1,49 +1,53 @@
-﻿using System;
-using Xunit;
+﻿using Bogus;
+using System;
 using Vectra.Avaliacao.Backend.Domain.Entities;
 
 public class BaseEntityTests
-{
+{   
+
     [Fact]
-    public void BaseEntity_IdIsNullable()
+    public void BaseEntity_CreatedAtIsSetOnCreation()
     {
         // Arrange
-        var entity = new BaseEntity<string>();
+        var entity = new BaseEntity<int>();
+        var createdAt = DateTime.UtcNow;
 
         // Act
-        entity.Id = null;
+        entity.CreatedAt = createdAt;
 
         // Assert
-        Assert.Null(entity.Id);
+        Assert.Equal(createdAt, entity.CreatedAt);
     }
 
     [Fact]
-    public void BaseEntity_CreatedAt_IsInitialized()
-    {
-        // Arrange
-        var entity = new BaseEntity<int>();
-
-        // Assert
-        Assert.NotEqual(DateTime.Now, entity.CreatedAt);
-    }
-
-    [Fact]
-    public void BaseEntity_UpdatedAt_IsInitialized()
-    {
-        // Arrange
-        var entity = new BaseEntity<int>();
-
-        // Assert
-        Assert.NotEqual(DateTime.Now, entity.UpdatedAt);
-    }
-
-    [Fact]
-    public void BaseEntity_IsActive_DefaultValueIsFalse()
+    public void BaseEntity_IsActiveIsSetOnCreation()
     {
         // Arrange
         var entity = new BaseEntity<int>();
 
         // Assert
         Assert.False(entity.IsActive);
+    }
+
+    [Fact]
+    public void BaseEntity_CanBeConstructedWithFaker()
+    {
+        // Arrange
+        var faker = new Faker();
+        var createdAt = faker.Date.Past();
+        var updatedAt = faker.Date.Between(createdAt, DateTime.UtcNow);
+        var isActive = faker.Random.Bool();
+        var entity = new BaseEntity<int>
+        {
+            Id = faker.Random.Int(),
+            CreatedAt = createdAt,
+            UpdatedAt = updatedAt,
+            IsActive = isActive
+        };
+
+        // Assert
+        Assert.Equal(createdAt, entity.CreatedAt);
+        Assert.Equal(updatedAt, entity.UpdatedAt);
+        Assert.Equal(isActive, entity.IsActive);
     }
 }
